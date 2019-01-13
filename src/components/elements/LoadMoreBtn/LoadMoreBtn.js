@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadMoreBtn from 'LoadMoreBtn.css';
+import './LoadMoreBtn.css';
 
 
 const LoadMoreBtn =(props) => {

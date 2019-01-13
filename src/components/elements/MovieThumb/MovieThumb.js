@@ -1,11 +1,11 @@
 import React from 'react';
-import MovieThumb from'./MovieThumb.css';
+import './MovieThumb.css';
 
 
 const MovieThumb = (props) => {
 return (
     <div>
-
+    MovieThumb
     </div>
 )
 }
