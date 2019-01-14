@@ -24,10 +24,29 @@ class Home extends Component {
         this.fetchItems(endpoint);
     }
 
+    loadMoreItems = () => {
+        let endpoint = '';
+        this.setState({loading: true});
+
+        if(this.state.searchTerm === '') {
+            endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page={this.state.currentPage + 1}`;
+        } else {
+            endpoint = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&page&query${this.state.searchTerm}&page=${this.state.cuurentPage + 1}`;
+        }
+        this.fetchItems(endpoint);
+    }
+
     fetchItems = (endpoint) => {
         fetch(endpoint)
         .then(result => result.json())
         .then(result => {
+            this.setState({
+                movies: [...this.state.movies, ...result.results],
+                heroImage: this.state.heroImage || result.results[0],
+                loading: false,
+                cuurentPage: result.page,
+                totalPages: result.total_pages
+            })
 
         })
     }
